@@ -35,6 +35,11 @@ void test_liste_points() {
     assert(l.nb_points == 2);
     assert(equal(elt(l, 1), p1));
     assert(equal(elt(l, 2), p3));
+    add(l, p1);
+    add(l, p1);
+    remove(l, p1);
+    assert(l.nb_points == 1);
+    assert(equal(elt(l, 1), p3));
 }
 
 int main() {

@@ -1,7 +1,7 @@
 /* liste_points.cpp */
 
-#include "liste_points.hpp"
 #include "point.hpp"
+#include "liste_points.hpp"
 #include <iostream>
 #include <cstdlib>
 
@@ -57,18 +57,26 @@ int position(const liste_points &l, const point &p) {
     return -1;
 }
 
-// void remove(liste_points &l, const point &p) {
-//     point *p1 = l.points;
-//     point *p2 = l.points;
-//     point *up = l.points + l.nb_points;
-//     while (p1 != up) {
-// 	if (equal(*p1, p))
-
 void remove(liste_points &l, int n) {
     for (int i = n; i < l.nb_points; ++i) {
 	l.points[i-1] = l.points[i];
     }
     l.nb_points--;
+}
+
+void remove(liste_points &l, const point &p) {
+    point *pread = l.points;
+    point *pwrite = l.points;
+    point *up = l.points + l.nb_points;
+    while (pread != up) {
+	if (equal(*pread, p)) {
+	    l.nb_points--;
+	} else {
+	    *pwrite = *pread;
+	    ++pwrite;
+	}
+	++pread;
+    }
 }
 
 void print_state(const liste_points &l) {
