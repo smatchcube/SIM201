@@ -20,7 +20,7 @@ void reset(liste_points & l) {
 }
 
 void resize(liste_points &l, int n) {
-    l.points = (point*) realloc(l.points, n*sizeof(point));
+    l.points = (point*) realloc(l.points, n * sizeof(point));
     if (l.points == nullptr) {
 	std::cerr << "Failure reallocating memory for a liste_points\n";
 	exit(EXIT_FAILURE);
